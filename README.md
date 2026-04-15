@@ -60,7 +60,7 @@ Team Stripe
 
 ## Year
 
-2025
+2026
 
 ## Notes
 
