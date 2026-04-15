@@ -1,6 +1,6 @@
 # Team-Stripe-Java-Projects
 
-## Java Industry Prep - 2025
+## Java Industry Prep - 2026
 
 This repository contains semester Java projects completed by Team Stripe for the Java Industry Prep module.
 
