@@ -1,72 +1,45 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public abstract class BankingAccount{
-    private String AccountNumber;
-    private String OwnerName;
+public abstract class BankAccount{
+    private String accountNumber;
+    private String ownerName;
     private double balance;
+    //private List<Transaction> transactions;
     
-    public BankingAccount(String AccountNumber, String OwnerName, double initialBalance){
-    this.AccountNumber = AccountNumber;
-    this.OwnerName = OwnerName;
-    this.balance = initialBalance;
-    private ArrayList<String> transactionHistory = new ArrayList<>();}
+    public BankAccount(String accountNumber, String ownerName, double initialBalance){
+        this.accountNumber = accountNumber;
+        this.ownerName = ownerName;
+        this.balance= initialBalance;
+       // transactions = new ArrayList<>();} 
 
 
-    public String getAccountNumber() {
-        return AccountNumber;
+    public String getAccountNumber(){
+        return accountNumber;
     }
 
-    public String getOwnerName() {
-        return OwnerName;
+    public String getOwnerName(){
+        return ownerName;
     }
 
-    public double getBalance() {
+    public double getBalance(){
         return balance;
     }
 
-    public getTransactionHistory() {
-        return transactionHistory;
-    
-    
-    }
 
-    protected void deductFromBalance(double amount){}
-
-    public abstract void withdraw(double amount){
-
-        throw new InsufficientFundsException("The Amount is Insifficient to be Withdraw");
-
-
-    }
-
-    public void deposit(double amount){
-        if(amount > 0){
-            balance += amount;
-            transactionHistory.add("Deposited: " + amount);
-        } 
-        else {
-            throw new IllegalArgumentException("Deposit amount must be positive.");
-        }
-
-    }
-
-    public void printStatement(){
-
-        if(transactionHistory.isEmpty()){
-            System.out.println("No transactions yet.");
-        } 
-        else if (transactionHistory.size() == 5){
-            System.out.println("Transaction History:");
-            for(String transaction : transactionHistory){
-                System.out.println(transaction);
-            }
-        }
+    public List getTransaction(){
+        return transactions;
     }
 
 
+    protected void deductFromBalance(double amount);
+
+    public abstract void withdraw(double amount){}
+
+    public void deposit(double amount){}
+
+    public void printStatement(){}
 
 
+}}
 
-
-
-}
