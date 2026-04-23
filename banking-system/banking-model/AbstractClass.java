@@ -11,7 +11,7 @@ public abstract class BankAccount{
     private double balance;
     // Transactions List from Tickets 2
 
-    //private List<Transaction> transactions;
+    private List<Transaction> transactions;
     
     public BankAccount(String accountNumber, String ownerName, double initialBalance){
         this.accountNumber = accountNumber;
@@ -19,7 +19,7 @@ public abstract class BankAccount{
         this.balance= initialBalance;
         // initialise the transaction list;
 
-       // transactions = new ArrayList<>();
+       transactions = new ArrayList<>();
        } 
 
 
@@ -38,9 +38,9 @@ public abstract class BankAccount{
     }
 
 
-    //public List getTransaction(){
-    //    return transactions;
-    //}
+    public List getTransaction(){
+        return transactions;
+    }
 
 
     protected void deductFromBalance(double amount){
@@ -57,13 +57,14 @@ public abstract class BankAccount{
         balance += amount;
 
         // Record transaction
-        //transactions.add(new Transaction("Deposit", amount));
+        transactions.add(new Transaction("Deposit", amount));
     }
 
     
 
     public void printStatement(){
         System.out.println("Last 5 Transactions:");
+         int start = Math.max(0, transactions.size() - 5);
         for(int i = 0; i < transactions.size();i++){
             System.out.println(transactions.get(i));
         }
