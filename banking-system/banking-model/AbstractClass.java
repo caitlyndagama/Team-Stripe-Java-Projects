@@ -1,18 +1,29 @@
+package banking.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BankAccount{
+    // Private Fields;
+
     private String accountNumber;
     private String ownerName;
     private double balance;
+    // Transactions List from Tickets 2
+
     //private List<Transaction> transactions;
     
     public BankAccount(String accountNumber, String ownerName, double initialBalance){
         this.accountNumber = accountNumber;
         this.ownerName = ownerName;
         this.balance= initialBalance;
-       // transactions = new ArrayList<>();} 
+        // initialise the transaction list;
 
+       // transactions = new ArrayList<>();
+       } 
+
+
+        // Some Getters to access the Private Attributes
 
     public String getAccountNumber(){
         return accountNumber;
@@ -27,19 +38,39 @@ public abstract class BankAccount{
     }
 
 
-    public List getTransaction(){
-        return transactions;
+    //public List getTransaction(){
+    //    return transactions;
+    //}
+
+
+    protected void deductFromBalance(double amount){
+        balance-= amount;
     }
 
+    public abstract void withdraw(double amount) throws InsufficientFundsException;
 
-    protected void deductFromBalance(double amount);
+    public void deposit(double amount){
+                if (amount <= 0) {
+            System.out.println("Deposit must be greater than zero.");
+        }
 
-    public abstract void withdraw(double amount){}
+        balance += amount;
 
-    public void deposit(double amount){}
+        // Record transaction
+        //transactions.add(new Transaction("Deposit", amount));
+    }
 
-    public void printStatement(){}
+    
+
+    public void printStatement(){
+        System.out.println("Last 5 Transactions:");
+        for(int i = 0; i < transactions.size();i++){
+            System.out.println(transactions.get(i));
+        }
+
+    }
+}
 
 
-}}
+
 
